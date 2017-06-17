@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div style="font-family: Arial, Helvetica, sans-serif;">
+<a href="/blog" style="font-size: 1em;">Main Blog Page</a> 
+<a href="/add" style="font-size: 1em;">Add a Blog Entry</a>
+
+
+    <h1 style="text-align: center;">Here's-a-Blog</h1>
+
+        <ul>
+            <strong><span style="font-size: 2em;">{{blog_name}}</strong></span><br/><br/>
+            <span style="font-size: 1em;">{{blog_body}}</span><br/>
+            <hr />
+        </ul>
+</div>
+{% endblock %}
