@@ -14,8 +14,9 @@ class Blog(db.Model):
     entry = db.Column(db.String(5000))
     
 
-    def __init__(self, title):
+    def __init__(self, title, entry):
         self.title = title
+        self.entry = entry
 
 @app.route('/')
 def go_away():
@@ -41,7 +42,7 @@ def add_blog():
             return render_template('blog_entry_form.html', error=error, title='Add-a-Blog')
 
         else:
-            new_blog = Blog(blog_name)
+            new_blog = Blog(blog_name, blog_body)
             db.session.add(new_blog)
             db.session.commit()
 
