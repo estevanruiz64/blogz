@@ -71,14 +71,15 @@ def add_blog():
             new_blog = Blog(blog_name, blog_body, owner)
             db.session.add(new_blog)
             db.session.commit()
+            blog_id = new_blog.id
+            blog = Blog.query.filter_by(id = blog_id).first()
 
-
-        return render_template('solo_blog.html', blog_name=blog_name, blog_body=blog_body, title='Here\'s-a-Blog', email=email, id=id)
+        return render_template('solo_blog.html', blog_name=blog_name, blog_body=blog_body, title='Here\'s-a-Blog', email=email, id=id, blog=blog)
     
     return render_template('blog_entry_form.html', title='Add-a-Blog')  
 
 
-@app.route('/blog-post')
+@app.route('/blog-post', methods=['POST', 'GET'])
 def goto_blog():
     id = request.args.get('id')
     blog = Blog.query.filter_by(id=id).first()
